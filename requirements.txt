@@ -1,0 +1,7 @@
+Django>=1.7
+djangorestframework
+pillow
+
+# Usefull for debugging but not required:
+Werkzeug
+django-extensions

@@ -4,3 +4,4 @@
 *.egg-info
 *.sqlite
 node_modules
+bower_components
