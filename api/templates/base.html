@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
+<style>
+    body {
+        padding-top: 20px;
+    }
+</style>
+</head>
+<body ng-app="{% block ng_app %}api.app.base{% endblock %}">
+<h1>{% block title %}A title ...{% endblock %}</h1>
+<div class="container">
+    <div class="content ng-cloak" ng-controller="{% block ng_controller %}AppController{% endblock %}">
+        {% block content %}Nothing here ...{% endblock %}
+    </div>
+</div>
+{% block js %}
+<script src="{% static "underscore/underscore.js" %}"></script>
+<script src="{% static "angular/angular.js" %}"></script>
+<script src="{% static "angular-resource/angular-resource.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+{% endblock %}
+</body>
+</html>

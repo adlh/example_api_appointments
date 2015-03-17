@@ -12,3 +12,7 @@ class AppointmentDetail(generics.RetrieveAPIView):
     lookup_field = 'pk'
     queryset = Appointment.objects.all()
 
+class AppointmentList(generics.ListAPIView):
+    model = Appointment
+    serializer_class = AppointmentSerializer
+    queryset = Appointment.objects.all()

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block ng_app %}api.app.appointments{% endblock %}
+
+{% block title %}A list of all appointments{% endblock%}
+
+{% block content %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            {% block panel_header %}
+            <h3 class="panel-title">Appointments</h3>
+            {% endblock %}
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li ng-repeat="appointment in appointments">
+                    {% verbatim %}
+                    {{ appointment.text }} <small>
+                        {{ appointment.owner.name }}</small>
+                    {% endverbatim %}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
