@@ -1,6 +1,7 @@
 Django>=1.7
 djangorestframework
 pillow
+pytz
 
 # Usefull for debugging but not required:
 Werkzeug
