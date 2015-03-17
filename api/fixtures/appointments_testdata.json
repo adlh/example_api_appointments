@@ -1,0 +1,222 @@
+[
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "info@metamorfosy.de",
+        "name": "Andrea"
+    },
+    "pk": 1
+},
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "bob@example.de",
+        "name": "Bob"
+    },
+    "pk": 2
+},
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "john@example.de",
+        "name": "John"
+    },
+    "pk": 3
+},
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "paul@example.de",
+        "name": "Paul"
+    },
+    "pk": 4
+},
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "jens@example.de",
+        "name": "Jens"
+    },
+    "pk": 5
+},
+{
+    "model": "api.participant",
+    "fields": {
+        "email": "mary@example.de",
+        "name": "Mary"
+    },
+    "pk": 6
+},
+{
+    "model": "api.appointment",
+    "fields": {
+        "participants": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "owner": 1,
+        "text": "An important meeting at the office."
+    },
+    "pk": 1
+},
+{
+    "model": "api.appointment",
+    "fields": {
+        "participants": [
+            1,
+            4,
+            5,
+            6
+        ],
+        "owner": 1,
+        "text": "Annother meeting at the office."
+    },
+    "pk": 2
+},
+{
+    "model": "api.appointment",
+    "fields": {
+        "participants": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "owner": 1,
+        "text": "A meeting with everybody."
+    },
+    "pk": 3
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 1,
+        "date": "2015-03-24T08:30:00Z"
+    },
+    "pk": 1
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 1,
+        "date": "2015-03-24T10:00:00Z"
+    },
+    "pk": 2
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 1,
+        "date": "2015-03-24T13:00:00Z"
+    },
+    "pk": 3
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 2,
+        "date": "2015-04-10T08:30:00Z"
+    },
+    "pk": 4
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 2,
+        "date": "2015-04-10T10:00:00Z"
+    },
+    "pk": 5
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 2,
+        "date": "2015-04-10T13:00:00Z"
+    },
+    "pk": 6
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 3,
+        "date": "2015-03-26T08:30:00Z"
+    },
+    "pk": 7
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 3,
+        "date": "2015-03-26T10:00:00Z"
+    },
+    "pk": 8
+},
+{
+    "model": "api.scheduleoption",
+    "fields": {
+        "appointment": 3,
+        "date": "2015-03-26T13:00:00Z"
+    },
+    "pk": 9
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 1,
+        "participant": 1
+    },
+    "pk": 1
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 2,
+        "participant": 1
+    },
+    "pk": 2
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 3,
+        "participant": 1
+    },
+    "pk": 3
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 3,
+        "participant": 2
+    },
+    "pk": 4
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 2,
+        "participant": 3
+    },
+    "pk": 5
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 1,
+        "participant": 4
+    },
+    "pk": 6
+},
+{
+    "model": "api.acceptedoption",
+    "fields": {
+        "option": 3,
+        "participant": 4
+    },
+    "pk": 7
+}
+]
