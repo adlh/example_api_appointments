@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% block ng_app %}api.app.appointments{% endblock %}
+{% block ng_app %}api.app_list{% endblock %}
+{% block ng_controller %}api.list_ctrl{% endblock %}
 
 {% block title %}A list of all appointments{% endblock%}
 
@@ -14,10 +15,9 @@
         <div class="panel-body">
             <ul>
                 <li ng-repeat="appointment in appointments">
-                    {% verbatim %}
-                    {{ appointment.text }} <small>
-                        {{ appointment.owner.name }}</small>
-                    {% endverbatim %}
+                    {[{ appointment.text }]} <small>
+                        {[{ appointment.owner.name }]}</small>
+                        <a href="{[{ appointment.details }]}">Details</a>
                 </li>
             </ul>
         </div>

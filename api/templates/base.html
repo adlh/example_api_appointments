@@ -7,19 +7,26 @@
     body {
         padding-top: 20px;
     }
+    table {
+        font-size: small;
+    }
+    .options-list label {
+        display: block;
+    }
 </style>
 </head>
 <body ng-app="{% block ng_app %}api.app.base{% endblock %}">
-<h1>{% block title %}A title ...{% endblock %}</h1>
 <div class="container">
+    <h1 class="page-header">{% block title %}A title ...{% endblock %}</h1>
     <div class="content ng-cloak" ng-controller="{% block ng_controller %}AppController{% endblock %}">
         {% block content %}Nothing here ...{% endblock %}
     </div>
 </div>
 {% block js %}
-<script src="{% static "underscore/underscore.js" %}"></script>
-<script src="{% static "angular/angular.js" %}"></script>
-<script src="{% static "angular-resource/angular-resource.js" %}"></script>
+<script src="{% static "underscore/underscore-min.js" %}"></script>
+<script src="{% static "angular/angular.min.js" %}"></script>
+<script src="{% static "angular-route/angular-route.min.js" %}"></script>
+<script src="{% static "angular-resource/angular-resource.min.js" %}"></script>
 <script src="{% static "js/script.js" %}"></script>
 {% endblock %}
 </body>

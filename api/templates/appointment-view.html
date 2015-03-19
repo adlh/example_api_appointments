@@ -1,59 +1,102 @@
 {% extends 'base.html' %}
 
-{% block title %}Details for appointment {{ params.pk }}{% endblock%}
+{% block title %}Details for appointment {{ pk }}{% endblock%}
 
-{% block ng_app %}api.app.appointment{% endblock %}
+{% block ng_app %}api.appointments{% endblock %}
+{% block ng_controller %}api.view_ctrl{% endblock %}
 
 {% block content %}
-<div class="panel panel-info">
-    <div class="panel-heading">
-        {% block panel_header %}
-        <h3 class="panel-title">
-            {% verbatim %}
-            {{ appointment.text }}<small>{{ appointment.owner.name }}</small>
-            {% endverbatim %}
-        <h3>
-        {% endblock %}
-    </div>
-    <div class="panel-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3>Best options</h3>
-                    <table class="table table-striped">
-                        <thead>
+<p>{[{ appointment.text }]}</p>
+<p><small>[Scheduled by {[{ appointment.owner.name }]}]</small></p>
+<div class="row">
+    <div class="col-sm-8">
+        <form class="form">
+            <div class="form-group">
+                <label for="selectName"><strong>Please select your
+                    name:</strong></label>
+                <select id="selectName" required
+                    ng-change="participantChanged()"
+                    ng-model="attendant.id">
+                    <option value="">Pick your name</option>
+                    <option ng-repeat="participant in appointment.participants"
+                    value="{[{ participant.id }]}">{[{ participant.name }]}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p><strong>Please select the options that would work for you:</strong></p>
+            </div>
+            <div class="form-group options-list">
+                <div class="checkbox">
+                    <label ng-repeat="op in appointment.options">
+                        <input
+                            type="checkbox"
+                            value="{{op.id}}"
+                            name="selectedOptions[]"
+                            ng-checked="selection.indexOf(op.id) > -1"
+                            ng-click="toggleSelection(op.id)"
+                            />
+                            {[{ op.date | date:'EEEE, d MMMM y - HH:mm' }]}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" ng-click="save_options()">
+                    Save</button>
+            </div>
+        </form>
+    </div><!--col-sm-8-->
+    <div class="col-sm-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Best options</h3>
+            </div><!--panel-heading-->
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
                             <th>Date</th>
                             <th>Count</th>
-                            </head>
-                            <tbody>
-                            <tr ng-repeat="op in appointment.best_options">
-                                {% verbatim %}
-                                <td>{{ op[0] }}</td>
-                                <td>{{ op[1] }}</td>
-                                {% endverbatim %}
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div><!--col-->
-                </div><!--row-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h3>Options and who would come</h3>
-                        <table class="table table-striped">
-                            <thead>
-                                <th>Date</th><th>People</th>
-                                </head>
-                                <tbody>
-                                <tr ng-repeat="op in appointment.option_overview">
-                                    {% verbatim %}
-                                    <td>{{ op[0] }}</td><td>{{ op[1] }}</td>
-                                    {% endverbatim %}
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div><!--col-->
-                    </div><!--row-->
-                </div><!--panel-body-->
-            </div><!--container-->
-</div><!--panel-->
+                        </tr>
+                    </head>
+                    <tbody>
+                        <tr ng-repeat="b_op in appointment.best_options">
+                            <td>{[{ b_op[0] }]}</td>
+                            <td>{[{ b_op[1] }]}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--panel-body-->
+        </div><!--panel-->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Options and who would come</h3>
+            </div><!--panel-heading-->
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>People</th>
+                        </tr>
+                    </head>
+                    <tbody>
+                        <tr ng-repeat="op_ov in appointment.option_overview">
+                            <td>{[{ op_ov[1] }]}</td>
+                            <td>{[{ op_ov[2] }]}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--panel-body-->
+        </div><!--panel-->
+    </div><!--col-sm-4-->
+</div><!--row-->
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script>
+// Add the CSRF Token
+var app = angular.module('api.appointments');
+app = add_csrf_token(app, '{{ csrf_token|escapejs }}');
+</script>
 {% endblock %}
