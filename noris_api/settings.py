@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'noris_api',
     'api',
 )
 
@@ -128,7 +129,13 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
             'formatter': 'verbose',
-        }
+        },
+        'log_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/django.log'),
+            'formatter': 'verbose',
+        },
     },
     'loggers': {
         'django.request': {
@@ -139,6 +146,16 @@ LOGGING = {
         'api': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
+            'propagate': True,
+        },
+        'api': {
+            'handlers': ['log_file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'noris_api': {
+            'handlers': ['log_file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     }
