@@ -6,7 +6,6 @@ create_database:
 	./manage.py makemigrations --noinput
 	./manage.py migrate --noinput
 	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
-	#./manage.py createsuperuser --username=me --email=me@example.com --noinput
 
 make_fixtures:
 	./manage.py create_participants
