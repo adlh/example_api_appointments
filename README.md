@@ -10,10 +10,8 @@ http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angul
 
 #DEPENDENCIES:
 
-This project was written under a virtualenv using python 3.3 and the
-requirements listed on the `requirements.txt` file
-
-Also, to get this project running, you'll need npm to install js dependencies.
+You'll need to setup a virtualenv using python 3.3 and you'll need npm to
+install bower and the js assets (defined in bower.json)
 
 
 #INSTALLATION:
@@ -37,7 +35,7 @@ Also, to get this project running, you'll need npm to install js dependencies.
         npm install
         bower install
 
-    if you didn't installed bower globally, then you'll have to run bower from
+    if you didn't install bower globally, then you'll have to run bower from
         the .bin folder like this, or add a link to your bin folder.
         
         ./node_modules/.bin/bower install
@@ -54,5 +52,5 @@ Also, to get this project running, you'll need npm to install js dependencies.
 
         /admin
 
-    Login credentials are admin/pass
+    and the login credentials are admin/pass
 
